@@ -22,6 +22,7 @@ namespace VacationSchedule
     {
         public MainWindow()
         {
+            //privet alina
             InitializeComponent();
         }
     }
