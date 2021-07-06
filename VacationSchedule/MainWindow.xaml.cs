@@ -24,16 +24,7 @@ namespace VacationSchedule
         {
             //privet alina
             //пдпдбми
-
-            
             InitializeComponent();
-            Func();
-        }
-
-        private void Func()
-        {
-            int x = 5;
-            Console.WriteLine(x);
         }
     }
 }
