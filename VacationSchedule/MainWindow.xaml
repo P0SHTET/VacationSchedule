@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <DatePicker HorizontalAlignment="Left" Margin="181,71,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="286,71,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="181,55,0,0" Text="Начало" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="285,55,0,0" Text="Конец" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,75,0,0" Text="Имя" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Rectangle HorizontalAlignment="Left" Height="13" Margin="201,307,0,0" Stroke="Black" 
+                   VerticalAlignment="Top" Width="373">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="Red" Offset="0.49"/>
+                    <GradientStop Color="Green" Offset="0.51"/>
+                    <GradientStop Color="Green" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
     </Grid>
 </Window>
