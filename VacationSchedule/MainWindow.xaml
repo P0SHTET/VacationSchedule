@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="89,53,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+                   Text="Игорь Николаевич" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="X" HorizontalAlignment="Left" Margin="161,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Y" HorizontalAlignment="Left" Margin="161,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="304,105,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

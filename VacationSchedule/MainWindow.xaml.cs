@@ -24,5 +24,19 @@ namespace VacationSchedule
         {
             InitializeComponent();
         }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            double xPosition = ((TextBlock)sender).Margin.Left + Left;
+            double yPosition = ((TextBlock)sender).Margin.Top + Top + 50;
+            ChangeDateWindow changeDateWindow = new ChangeDateWindow(xPosition, yPosition);
+            changeDateWindow.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            X.Text = Left.ToString();
+            Y.Text = Top.ToString();
+        }
     }
 }
