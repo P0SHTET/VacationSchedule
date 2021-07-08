@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace PersonVacationLib
 {
-    class Departament
+    class Department
     {
         private string _name;
         private List<PersonVacation> _personVacations;
-
     }
 }
