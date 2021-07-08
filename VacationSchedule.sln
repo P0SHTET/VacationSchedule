@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationSchedule", "VacationSchedule\VacationSchedule.csproj", "{22072F9C-459B-4094-AE4B-73CDF37A8385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControl", "UserControl\UserControl.csproj", "{CCE92621-07A7-44E7-898E-F6FD15507F32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationUserControl", "UserControl\VacationUserControl.csproj", "{CCE92621-07A7-44E7-898E-F6FD15507F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
