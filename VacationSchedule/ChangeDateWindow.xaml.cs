@@ -19,8 +19,8 @@ namespace VacationSchedule
     /// </summary>
     public partial class ChangeDateWindow : Window
     {
-        [System.ComponentModel.TypeConverter("System.Windows.LengthConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
-        
+        public delegate void ChangeDate(DateTime startVacation, DateTime endVacation);
+        public event ChangeDate ChangeDateEvent;
         public ChangeDateWindow(double xPosition, double yPosition)
         {
             Left = xPosition;
@@ -30,6 +30,7 @@ namespace VacationSchedule
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ChangeDateEvent?.Invoke((DateTime)Start.SelectedDate,(DateTime)End.SelectedDate);
             DialogResult = true;
         }
 

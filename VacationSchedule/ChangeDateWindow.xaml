@@ -7,9 +7,9 @@
         mc:Ignorable="d" WindowStyle="None"
         Title="ChangeDateWindow" Height="150" Width="210" WindowStartupLocation="Manual">
     <Grid>
-        <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Width="180"/>
+        <DatePicker Name="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Width="180"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Начало отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,71,0,0" Width="180"/>
+        <DatePicker Name="End" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,71,0,0" Width="180"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,55,0,0" Text="Окончание отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Margin="120,100,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="45,100,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click_1"/>

@@ -30,13 +30,14 @@ namespace VacationSchedule
             double xPosition = ((TextBlock)sender).Margin.Left + Left;
             double yPosition = ((TextBlock)sender).Margin.Top + Top + 50;
             ChangeDateWindow changeDateWindow = new ChangeDateWindow(xPosition, yPosition);
+            changeDateWindow.ChangeDateEvent += ChangeDateWindow_changeDate;
             changeDateWindow.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChangeDateWindow_changeDate(DateTime startVacation, DateTime endVacation)
         {
-            X.Text = Left.ToString();
-            Y.Text = Top.ToString();
+            Start.SelectedDate = startVacation;
+            End.SelectedDate = endVacation;
         }
     }
 }
