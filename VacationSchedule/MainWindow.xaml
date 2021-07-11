@@ -9,8 +9,6 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="89,53,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
                    Text="Игорь Николаевич" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <DatePicker Name="Start" HorizontalAlignment="Left" Margin="222,49,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="End"  HorizontalAlignment="Left" Margin="327,49,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

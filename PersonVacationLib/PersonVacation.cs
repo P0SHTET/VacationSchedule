@@ -4,9 +4,15 @@ namespace PersonVacationLib
 {
     public class PersonVacation
     {
+        public PersonVacation(string name)
+        {
+            _name = name;
+            _startDateVacation = null;
+            _endDateVacation = null;
+        }
         private string _name;
-        private DateTime _startDateVacation;
-        private DateTime _endDateVacation;
+        private DateTime? _startDateVacation;
+        private DateTime? _endDateVacation;
         public string Name 
         { 
             get => _name;            
@@ -16,7 +22,7 @@ namespace PersonVacationLib
                 else new Exception("Пустое имя");
             }
         }
-        public DateTime StartDateVacation
+        public DateTime? StartDateVacation
         {
             get => _startDateVacation;
             set 
@@ -24,7 +30,7 @@ namespace PersonVacationLib
                 _startDateVacation = value;
             }
         }
-        public DateTime EndDateVacation
+        public DateTime? EndDateVacation
         {
             get => _endDateVacation;
             set

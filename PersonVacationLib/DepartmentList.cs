@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace PersonVacationLib
 {
-    class DepartmentList
+    public class DepartmentList
     {
-        private List<Department> _allDepartaments;
+        public DepartmentList()
+        {
+            _allDepartments = new List<Department>();
+        }
+        private List<Department> _allDepartments;
+        public List<Department> AllDepartments
+        {
+            get => _allDepartments;
+            set
+            {
+                _allDepartments = value;
+            }
+        }
     }
 }

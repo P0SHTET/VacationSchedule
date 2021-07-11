@@ -1,5 +1,8 @@
-﻿using System;
+﻿using JSONUtil;
+using PersonVacationLib;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +25,21 @@ namespace VacationSchedule
     {
         public MainWindow()
         {
+            //DepartmentList departmentList = new DepartmentList();
+            //departmentList.AllDepartments.Add(new Department("Прогеры"));
+            //departmentList.AllDepartments.Add(new Department("Хуёгеры"));
+
+            //departmentList.AllDepartments[0].PersonVacations.Add(new PersonVacation("Серёга"));
+            //departmentList.AllDepartments[0].PersonVacations[0].StartDateVacation=DateTime.Now;
+            //departmentList.AllDepartments[0].PersonVacations[0].EndDateVacation=DateTime.Today;
+            //departmentList.AllDepartments[0].PersonVacations.Add(new PersonVacation("Лёха"));
+
+            //departmentList.AllDepartments[1].PersonVacations.Add(new PersonVacation("Жека"));
+            //departmentList.AllDepartments[1].PersonVacations.Add(new PersonVacation("Андрей"));
+
+            //JSONConverter<DepartmentList>.Serialize(departmentList);
+
+            DepartmentList departmentList = JSONConverter<DepartmentList>.Deserialize();
             InitializeComponent();
         }
 
@@ -36,8 +54,7 @@ namespace VacationSchedule
 
         private void ChangeDateWindow_changeDate(DateTime startVacation, DateTime endVacation)
         {
-            Start.SelectedDate = startVacation;
-            End.SelectedDate = endVacation;
+            
         }
     }
 }
