@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace VacationSchedule.VacationUserControl
+namespace VacationSchedule
 {
     /// <summary>
     /// Логика взаимодействия для WorkersVacation.xaml
