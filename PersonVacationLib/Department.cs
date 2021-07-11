@@ -14,6 +14,12 @@ namespace PersonVacationLib
             _personVacations = new List<PersonVacation>();
         }
 
+        public Department()
+        {
+            _name = "";
+            _personVacations = new List<PersonVacation>();
+        }
+
         private string _name;
         private List<PersonVacation> _personVacations;
 

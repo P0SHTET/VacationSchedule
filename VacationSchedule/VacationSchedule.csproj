@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\JSONUtil\JSONUtil.csproj" />
     <ProjectReference Include="..\PersonVacationLib\PersonVacationLib.csproj" />
-    <ProjectReference Include="..\UserControl\VacationUserControl.csproj" />
   </ItemGroup>
 
 </Project>

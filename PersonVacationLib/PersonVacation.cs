@@ -4,6 +4,12 @@ namespace PersonVacationLib
 {
     public class PersonVacation
     {
+        public PersonVacation()
+        {
+            _name = "";
+            _startDateVacation = null;
+            _endDateVacation = null;
+        }
         public PersonVacation(string name)
         {
             _name = name;

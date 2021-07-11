@@ -7,8 +7,9 @@
         mc:Ignorable="d" Background="#CAEFFF" 
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="89,53,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
                    Text="Игорь Николаевич" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        
 
     </Grid>
 </Window>

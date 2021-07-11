@@ -1,31 +1,25 @@
 ﻿using System.IO;
-using System.Text.Json;
+using System.Runtime.Serialization.Json;
 
 namespace JSONUtil
 {
     public static class JSONConverter<T>
     {
-        private static T _obj;
-        public static async void Serialize(T obj)
+        private static DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+        
+        public static void Serialize(T obj)
         {
-            using (FileStream fs = new FileStream("data.json", FileMode.OpenOrCreate))
-            {
-                await JsonSerializer.SerializeAsync(fs, obj);
-            }
-        }
-
-        private static async void DeserializeObject()
-        {
-            using (FileStream fs = new FileStream("data.json", FileMode.OpenOrCreate))
-            {
-                _obj = await JsonSerializer.DeserializeAsync<T>(fs);
-            }
+            FileStream stream = new FileStream("data.json", FileMode.OpenOrCreate);
+            serializer.WriteObject(stream,obj);
+            stream.Close();
         }
 
         public static T Deserialize()
         {
-            DeserializeObject();
-            return _obj;
+            FileStream stream = new FileStream("data.json", FileMode.OpenOrCreate);
+            T res = (T)serializer.ReadObject(stream);
+            stream.Close();
+            return res;
         }
     }
 }
