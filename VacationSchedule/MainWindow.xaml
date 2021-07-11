@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacationSchedule"
         mc:Ignorable="d" Background="#CAEFFF" 
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="MainGrid">
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
                    Text="Игорь Николаевич" TextWrapping="Wrap" VerticalAlignment="Top"/>
         

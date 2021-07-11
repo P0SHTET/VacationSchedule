@@ -26,6 +26,14 @@ namespace VacationSchedule
         public MainWindow()
         {
             InitializeComponent();
+            WorkersVacation workers = new WorkersVacation(new PersonVacation()
+            {
+                Name = "Алексей",
+                StartDateVacation = new DateTime(2021, 3, 5),
+                EndDateVacation = new DateTime(2021, 4, 5),
+            });
+            workers.Margin = new Thickness(100, 100, 100, 736);
+            MainGrid.Children.Add(workers);
         }
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
