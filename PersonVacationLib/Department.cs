@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using IPersonLib;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PersonVacationLib
 {
-    public class Department
+    public class Department : IDepartment
     {
         public Department(string name)
         {
             _name = name;
-            _personVacations = new List<PersonVacation>();
+            _personVacations = new List<IPersonVacation>();
         }
 
         public Department()
         {
             _name = "";
-            _personVacations = new List<PersonVacation>();
+            _personVacations = new List<IPersonVacation>();
         }
 
         private string _name;
-        private List<PersonVacation> _personVacations;
+        private List<IPersonVacation> _personVacations;
 
         public string Name
         {
@@ -32,7 +33,7 @@ namespace PersonVacationLib
                 else new Exception("Пустое имя");
             }
         }
-        public List<PersonVacation> PersonVacations
+        public List<IPersonVacation> PersonVacations
         {
             get => _personVacations;
             set

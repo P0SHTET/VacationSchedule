@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +13,85 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PersonVacationLib;
+using IPersonLib;
 
 namespace VacationSchedule
 {
     /// <summary>
     /// Логика взаимодействия для WorkersVacation.xaml
     /// </summary>
-    public partial class WorkersVacation : UserControl
+    public partial class WorkersVacation : UserControl, INotifyPropertyChanged
     {
-        public Thickness RectangleMargin { get; set; }
-        public SolidColorBrush RectangleFill { get; set; }
-        private PersonVacation Person;
-        public WorkersVacation(PersonVacation person)
+        private Thickness _rectangleMargin;
+        public Thickness RectangleMargin 
+        {
+            get
+            {
+                return _rectangleMargin;
+            }
+            set
+            {
+                _rectangleMargin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RectangleMargin)));
+            }
+        }
+        private SolidColorBrush _rectangleFill;
+        public SolidColorBrush RectangleFill
+        {
+            get
+            {
+                return _rectangleFill;
+            }
+            set
+            {
+                _rectangleFill = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RectangleFill)));
+            }
+        }
+        private IPersonVacation Person;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public WorkersVacation()
+        {
+            InitializeComponent();
+        }
+        public WorkersVacation(IPersonVacation person, SolidColorBrush fill)
         {
             Person = person;
+            
             InitializeComponent();
-            RectangleFill = Brushes.Red;
+            NameBlock.Text =" " + Person.Name;
+            DataContext = this;
+            DataRec.Fill = fill;
+            UpdateDates();
+        }
+        private void UpdateDates()
+        {
             double left;
             double right;
-            
-            left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021,1,1))).Days/365.0 * 800;
-            right = 800- left - ((TimeSpan)(Person.EndDateVacation - Person.StartDateVacation)).Days / 365.0 * 800;
-            RectangleMargin = new Thickness(left, 0, right, 0);
 
+            left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021, 1, 1))).Days / 365.0 * 1417;
+            right = ((TimeSpan)(new DateTime(2021, 12, 31)-Person.EndDateVacation)).Days / 365.0 * 1417;
+            RectangleMargin = new Thickness(left, 0, right, 0);
+        }
+
+        private void NameBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            double xPosition = PointToScreen(new Point(0,((TextBlock)sender).ActualHeight)).X;
+            double yPosition = PointToScreen(new Point(0, ((TextBlock)sender).ActualHeight)).Y;
+            ChangeDateWindow changeDateWindow = new ChangeDateWindow(xPosition, yPosition, Person);
+            //var r = MainGrid.ActualWidth;
+            changeDateWindow.ChangeDateEvent += ChangeDateWindow_ChangeDateEvent;
+            changeDateWindow.ShowDialog();
+        }
+
+        private void ChangeDateWindow_ChangeDateEvent(DateTime startVacation, DateTime endVacation)
+        {
+            Person.StartDateVacation = startVacation;
+            Person.EndDateVacation = endVacation;
+
+            UpdateDates();
         }
     }
 }

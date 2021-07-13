@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IPersonLib;
 
 namespace VacationSchedule
 {
@@ -21,11 +22,15 @@ namespace VacationSchedule
     {
         public delegate void ChangeDate(DateTime startVacation, DateTime endVacation);
         public event ChangeDate ChangeDateEvent;
-        public ChangeDateWindow(double xPosition, double yPosition)
+        public ChangeDateWindow(double xPosition, double yPosition, IPersonVacation person)
         {
+            
+            InitializeComponent();
+
+            Start.SelectedDate = person.StartDateVacation;
+            End.SelectedDate = person.EndDateVacation;
             Left = xPosition;
             Top = yPosition;
-            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

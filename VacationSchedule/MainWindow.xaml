@@ -4,12 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacationSchedule"
-        mc:Ignorable="d" Background="#CAEFFF" 
+        mc:Ignorable="d" Background="#CAEFFF" ResizeMode="NoResize"
         Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
     <Grid x:Name="MainGrid">
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
-                   Text="Игорь Николаевич" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        
-
+        <local:VacationCalendar Margin="150,100,0,0"/>
     </Grid>
 </Window>

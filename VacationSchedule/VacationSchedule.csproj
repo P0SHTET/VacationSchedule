@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IPersonLib\IPersonLib.csproj" />
     <ProjectReference Include="..\JSONUtil\JSONUtil.csproj" />
     <ProjectReference Include="..\PersonVacationLib\PersonVacationLib.csproj" />
   </ItemGroup>

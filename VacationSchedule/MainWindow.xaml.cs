@@ -26,28 +26,14 @@ namespace VacationSchedule
         public MainWindow()
         {
             InitializeComponent();
-            WorkersVacation workers = new WorkersVacation(new PersonVacation()
-            {
-                Name = "Алексей",
-                StartDateVacation = new DateTime(2021, 3, 5),
-                EndDateVacation = new DateTime(2021, 4, 5),
-            });
-            workers.Margin = new Thickness(100, 100, 100, 736);
-            MainGrid.Children.Add(workers);
-        }
-
-        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            double xPosition = ((TextBlock)sender).Margin.Left + Left;
-            double yPosition = ((TextBlock)sender).Margin.Top + Top + 50;
-            ChangeDateWindow changeDateWindow = new ChangeDateWindow(xPosition, yPosition);
-            changeDateWindow.ChangeDateEvent += ChangeDateWindow_changeDate;
-            changeDateWindow.ShowDialog();
-        }
-
-        private void ChangeDateWindow_changeDate(DateTime startVacation, DateTime endVacation)
-        {
-            
-        }
+            //WorkersVacation workers = new WorkersVacation(new PersonVacation()
+            //{
+            //    Name = "Алексей",
+            //    StartDateVacation = new DateTime(2021, 3, 5),
+            //    EndDateVacation = new DateTime(2021, 4, 5),
+            //}, new SolidColorBrush(new Color() { A = 100, R = 0, G = 255, B = 0 }));
+            //workers.Margin = new Thickness(200, 100, 100, 736);
+            //MainGrid.Children.Add(workers);
+        }       
     }
 }

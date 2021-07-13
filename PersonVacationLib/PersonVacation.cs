@@ -1,8 +1,9 @@
 ﻿using System;
+using IPersonLib;
 
 namespace PersonVacationLib
 {
-    public class PersonVacation
+    public class PersonVacation : IPersonVacation
     {
         public PersonVacation()
         {

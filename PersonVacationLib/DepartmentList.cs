@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IPersonLib;
 
 namespace PersonVacationLib
 {
-    public class DepartmentList
+    public class DepartmentList : IDepartmentList
     {
         public DepartmentList()
         {
-            _allDepartments = new List<Department>();
+            _departments = new List<IDepartment>();
         }
-        private List<Department> _allDepartments;
-        public List<Department> AllDepartments
+        private List<IDepartment> _departments;
+        public List<IDepartment> Departments
         {
-            get => _allDepartments;
+            get => _departments;
             set
             {
-                _allDepartments = value;
+                _departments = value;
             }
         }
     }
