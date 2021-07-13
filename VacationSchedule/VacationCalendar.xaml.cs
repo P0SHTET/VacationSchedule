@@ -22,6 +22,7 @@ namespace VacationSchedule
         
     public partial class VacationCalendar : UserControl
     {
+        int[] PersonDay = new int[365];
         List<SolidColorBrush> RectanglesColors = new List<SolidColorBrush>()
         {
             new SolidColorBrush(new Color() { A = 100, R = 255, G = 0, B = 0 }),
@@ -54,6 +55,35 @@ namespace VacationSchedule
             foreach(var workers in workersVacations)
                 MainStackPanel.Children.Add(workers);
 
+            for(int i = 0; i<365;i++)
+            {
+                PersonDay[i] = workersVacations.Where(x =>
+                      ((TimeSpan)(x.Person.StartDateVacation - new DateTime(2021, 1, 1))).Days <= i + 1 &&
+                      ((TimeSpan)(x.Person.EndDateVacation - new DateTime(2021, 1, 1))).Days >= i + 1).Count();
+            }
+
+            int x = -10;
+            byte a = (byte)x;
+            int y = 300;
+            byte b = (byte)y;
+
+            LinearGradientBrush gradient = new LinearGradientBrush();
+
+            int CountPerson = workersVacations.Count;
+
+            for(int i = 0; i < 365; i++)
+            {
+                double percent = PersonDay[i] * 1.0/ CountPerson;
+                Color color = new Color()
+                {
+                    A = 150,
+                    R = percent < 0.1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent-0.1)*(1/0.25)*255),
+                    G = percent < 0.1 ? (byte)255 : percent > 0.25 ? (byte)0 : (byte)(255-(percent - 0.1) * (1 / 0.25) * 255),
+                    B = 0
+                };
+                gradient.GradientStops.Add(new GradientStop(color, i / 365.0));
+            }
+            ResultRectangle.Fill = gradient;
         }
     }
 }

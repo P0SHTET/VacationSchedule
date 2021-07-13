@@ -48,7 +48,7 @@ namespace VacationSchedule
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RectangleFill)));
             }
         }
-        private IPersonVacation Person;
+        public IPersonVacation Person;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,7 +61,7 @@ namespace VacationSchedule
             Person = person;
             
             InitializeComponent();
-            NameBlock.Text =" " + Person.Name;
+            NameBlock.Text = " " + Person.Name;
             DataContext = this;
             DataRec.Fill = fill;
             UpdateDates();

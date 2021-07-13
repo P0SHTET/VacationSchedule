@@ -11,6 +11,8 @@
             <StackPanel x:Name="MainStackPanel" >
                 
             </StackPanel>
+            
         </ScrollViewer>
+        <Rectangle x:Name="ResultRectangle" Margin="0,700,17,10"/>
     </Grid>
 </UserControl>
