@@ -22,6 +22,9 @@ namespace VacationSchedule
     /// </summary>
     public partial class WorkersVacation : UserControl, INotifyPropertyChanged
     {
+        public delegate void ChangeSignal();
+        public event ChangeSignal DatesChange;
+
         private Thickness _rectangleMargin;
         public Thickness RectangleMargin 
         {
@@ -61,18 +64,26 @@ namespace VacationSchedule
             Person = person;
             
             InitializeComponent();
-            NameBlock.Text = " " + Person.Name;
+            NameBlock.Text = "  " + Person.Name;
             DataContext = this;
             DataRec.Fill = fill;
+            ColorIndicator.Stroke = new SolidColorBrush(new Color() {A = 255, R = fill.Color.R, G = fill.Color.G, B = fill.Color.B, });
             UpdateDates();
         }
         private void UpdateDates()
         {
             double left;
             double right;
-
-            left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021, 1, 1))).Days / 365.0 * 1417;
-            right = ((TimeSpan)(new DateTime(2021, 12, 31)-Person.EndDateVacation)).Days / 365.0 * 1417;
+            if (Person.StartDateVacation == null || Person.EndDateVacation == null)
+            {
+                left = 0;
+                right = 1417;
+            }
+            else
+            {
+                left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021, 1, 1))).Days / 365.0 * 1417;
+                right = ((TimeSpan)(new DateTime(2021, 12, 31) - Person.EndDateVacation)).Days / 365.0 * 1417;
+            }
             RectangleMargin = new Thickness(left, 0, right, 0);
         }
 
@@ -86,12 +97,13 @@ namespace VacationSchedule
             changeDateWindow.ShowDialog();
         }
 
-        private void ChangeDateWindow_ChangeDateEvent(DateTime startVacation, DateTime endVacation)
+        private void ChangeDateWindow_ChangeDateEvent(DateTime? startVacation, DateTime? endVacation)
         {
             Person.StartDateVacation = startVacation;
             Person.EndDateVacation = endVacation;
 
             UpdateDates();
+            DatesChange?.Invoke();
         }
     }
 }

@@ -28,13 +28,19 @@ namespace VacationSchedule
         private DepartmentList _departmentList;
         public MainWindow()
         {
-            _departmentList = JSONConverter<DepartmentList>.Deserialize();
-            _vacationCalendar = new VacationCalendar(_departmentList.Departments[0]);
-            _vacationCalendar.Margin = new Thickness(150, 100, 0, 0);
-            
             InitializeComponent();
-
+            _departmentList = JSONConverter<DepartmentList>.Deserialize();
+            _vacationCalendar = new VacationCalendar(_departmentList.Departments[1])
+            {
+                Margin = new Thickness(150, 100, 0, 0)
+            };
             MainGrid.Children.Add(_vacationCalendar);
-        }       
+            _vacationCalendar.InfoChanged += VacationCalendar_InfoChanged;
+        }
+
+        private void VacationCalendar_InfoChanged()
+        {
+            JSONConverter<DepartmentList>.Serialize(_departmentList);
+        }
     }
 }

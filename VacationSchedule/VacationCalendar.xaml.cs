@@ -33,53 +33,60 @@ namespace VacationSchedule
             new SolidColorBrush(new Color() { A = 100, R = 255, G = 0, B = 255 }),
             new SolidColorBrush(new Color() { A = 100, R = 0, G = 255, B = 255 }),
         };
-
         List<WorkersVacation> Vacations = new();
+
+        public delegate void UpdateInfo();
+        public event UpdateInfo InfoChanged;
+
         public VacationCalendar(IDepartment department)
         {
             InitializeComponent();
-            for(int i =0; i < 35; i++)
+            int j = 0;
+            foreach(IPersonVacation person in department.PersonVacations)
             {
-                Vacations.Add(new WorkersVacation(new PersonVacation()
-                {
-                    Name = i.ToString(),
-                    StartDateVacation = new DateTime(2021, 3, (i + 1) % 28 + 1),
-                    EndDateVacation = new DateTime(2021, 4, (i + 1) % 28 + 1),
-                }, RectanglesColors[i % RectanglesColors.Count])
-                {
-                    Margin = new Thickness(0, 1, 2, 1)
-                });
+                Vacations.Add(new WorkersVacation(person, RectanglesColors[j % RectanglesColors.Count])
+                                                 { Margin = new Thickness(0, 1, 2, 1) });
+                j++;
             }
 
-            
-            foreach(var workers in Vacations)
-                MainStackPanel.Children.Add(workers);
 
-            for(int i = 0; i<365;i++)
+            foreach (var workers in Vacations)
             {
-                PersonDay[i] = Vacations.Where(x =>
+                MainStackPanel.Children.Add(workers);
+                workers.DatesChange += Workers_DatesChange;
+            }
+
+            UpdateResultRectangle();
+        }
+
+        private void Workers_DatesChange()
+        {
+            UpdateResultRectangle();
+            InfoChanged?.Invoke();
+        }
+
+        private void UpdateResultRectangle()
+        {
+            for (int i = 0; i < 365; i++)
+            {
+                PersonDay[i] = Vacations.Where(x => (x.Person.StartDateVacation != null && x.Person.EndDateVacation != null) &&
                       ((TimeSpan)(x.Person.StartDateVacation - new DateTime(2021, 1, 1))).Days <= i + 1 &&
                       ((TimeSpan)(x.Person.EndDateVacation - new DateTime(2021, 1, 1))).Days >= i + 1).Count();
             }
 
-            int x = -10;
-            byte a = (byte)x;
-            int y = 300;
-            byte b = (byte)y;
-
-            LinearGradientBrush gradient = new LinearGradientBrush();
+            LinearGradientBrush gradient = new();
 
             int CountPerson = Vacations.Count;
 
-            for(int i = 0; i < 365; i++)
+            for (int i = 0; i < 365; i++)
             {
-                double percent = PersonDay[i] * 1.0/ CountPerson;
+                double percent = PersonDay[i] * 1.0 / CountPerson;
                 Color color = new()
                 {
                     A = 150,
-                    R = percent < 0.1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent-0.1)*(1/0.25)*255),
-                    G = percent < 0.1 ? (byte)255 : percent > 0.25 ? (byte)0 : (byte)(255-(percent - 0.1) * (1 / 0.25) * 255),
-                    B = 0
+                    R = percent == 0 ? (byte)255 : percent < 0.1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent - 0.1) * (1 / 0.25) * 255),
+                    G = percent == 0 ? (byte)255 : percent < 0.1 ? (byte)255 : percent > 0.25 ? (byte)0 : (byte)(255 - (percent - 0.1) * (1 / 0.25) * 255),
+                    B = percent == 0 ? (byte)255 : (byte)0
                 };
                 gradient.GradientStops.Add(new GradientStop(color, i / 365.0));
             }

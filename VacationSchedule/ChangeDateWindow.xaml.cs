@@ -20,7 +20,7 @@ namespace VacationSchedule
     /// </summary>
     public partial class ChangeDateWindow : Window
     {
-        public delegate void ChangeDate(DateTime startVacation, DateTime endVacation);
+        public delegate void ChangeDate(DateTime? startVacation, DateTime? endVacation);
         public event ChangeDate ChangeDateEvent;
         public ChangeDateWindow(double xPosition, double yPosition, IPersonVacation person)
         {
@@ -35,7 +35,7 @@ namespace VacationSchedule
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ChangeDateEvent?.Invoke((DateTime)Start.SelectedDate,(DateTime)End.SelectedDate);
+            ChangeDateEvent?.Invoke(Start.SelectedDate, End.SelectedDate);
             DialogResult = true;
         }
 

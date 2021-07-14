@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using IPersonLib;
 
 namespace PersonVacationLib
 {
+    [Serializable]
     public class PersonVacation : IPersonVacation
     {
         public PersonVacation()

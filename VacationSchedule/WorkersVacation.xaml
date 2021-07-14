@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:VacationSchedule"
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="1300" Background="White">
-    <Grid x:Name="MainGrid">
-        <TextBlock HorizontalAlignment="Left" Name="NameBlock" Background="Transparent"
-                   VerticalAlignment="Center" FontSize="20" FontWeight="Bold" MouseLeftButtonUp="NameBlock_MouseLeftButtonUp"/>
+    <Grid x:Name="MainGrid">        
         <Rectangle x:Name="DataRec" Margin="{Binding Path=RectangleMargin}"/>
+        <Line x:Name="ColorIndicator" X1="0" Y1="0" X2="0" Y2="{Binding ElementName=MainGrid, Path=ActualHeight}" StrokeThickness="10"/>
+        <TextBlock HorizontalAlignment="Left" Name="NameBlock" Background="Transparent"
+                   VerticalAlignment="Center" FontSize="18" FontWeight="Bold" MouseLeftButtonUp="NameBlock_MouseLeftButtonUp"/>
     </Grid>
 </UserControl>

@@ -4,9 +4,12 @@ using IPersonLib;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace PersonVacationLib
 {
+    [Serializable]
+    [KnownType(typeof(PersonVacation))]
     public class Department : IDepartment
     {
         public Department(string name)

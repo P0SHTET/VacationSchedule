@@ -4,9 +4,127 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacationSchedule"
-        mc:Ignorable="d" Background="#CAEFFF" ResizeMode="NoResize"
+        mc:Ignorable="d" Background="LightGray" ResizeMode="NoResize"
         Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="MainGrid">
-        <local:VacationCalendar Margin="150,100,0,0"/>
+
+    <Grid>
+        <Grid x:Name="MainGrid"/>
+        <Grid x:Name="ParentGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="33"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="1"  Text="Январь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2"  Text="Февраль" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="3"  Text="Март " 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="4"  Text="Апрель" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="5"  Text="Май" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="6"  Text="Июнь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="7"  Text=" Июль" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="8"  Text="  Август" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="9"  Text="   Сентябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="10"  Text="   Октябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="11"  Text="    Ноябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="12"  Text="     Декабрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" 
+                       FontSize="20" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="1"  Text="Январь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2"  Text="Февраль" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="3"  Text="Март " 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="4"  Text="Апрель" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="5"  Text="Май" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="6"  Text="Июнь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="7"  Text=" Июль" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="8"  Text="  Август" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="9"  Text="   Сентябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="10"  Text="   Октябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="11"  Text="    Ноябрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+            <TextBlock Grid.Column="12"  Text="     Декабрь" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
+                       FontSize="20" FontWeight="Bold"/>
+
+            <Line X1="3" Y1="80" X2="3" Y2="850"
+                  Grid.Column="2" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="-5" Y1="80" X2="-5" Y2="850"
+                  Grid.Column="3" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="-1" Y1="80" X2="-1" Y2="850"
+                  Grid.Column="4" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="-1" Y1="80" X2="-1" Y2="850"
+                  Grid.Column="5" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="1" Y1="80" X2="1" Y2="850"
+                  Grid.Column="6" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="1" Y1="80" X2="1" Y2="850"
+                  Grid.Column="7" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="4" Y1="80" X2="4" Y2="850"
+                  Grid.Column="8" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="8" Y1="80" X2="8" Y2="850"
+                  Grid.Column="9" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="8" Y1="80" X2="8" Y2="850"
+                  Grid.Column="10" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="12" Y1="80" X2="12" Y2="850"
+                  Grid.Column="11" StrokeThickness="1" Stroke="Black"/>
+            <Line X1="12" Y1="80" X2="12" Y2="850"
+                  Grid.Column="12" StrokeThickness="1" Stroke="Black"/>
+        </Grid>
+        
+        
     </Grid>
 </Window>
