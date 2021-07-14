@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IPersonLib;
 using PersonVacationLib;
 
 namespace VacationSchedule
@@ -23,7 +24,7 @@ namespace VacationSchedule
     public partial class VacationCalendar : UserControl
     {
         int[] PersonDay = new int[365];
-        List<SolidColorBrush> RectanglesColors = new List<SolidColorBrush>()
+        readonly List<SolidColorBrush> RectanglesColors = new()
         {
             new SolidColorBrush(new Color() { A = 100, R = 255, G = 0, B = 0 }),
             new SolidColorBrush(new Color() { A = 100, R = 0, G = 255, B = 0 }),
@@ -32,15 +33,14 @@ namespace VacationSchedule
             new SolidColorBrush(new Color() { A = 100, R = 255, G = 0, B = 255 }),
             new SolidColorBrush(new Color() { A = 100, R = 0, G = 255, B = 255 }),
         };
-        List<PersonVacation> people = new List<PersonVacation>();
-        List<WorkersVacation> vacations = new List<WorkersVacation>();
-        public VacationCalendar()
+
+        List<WorkersVacation> Vacations = new();
+        public VacationCalendar(IDepartment department)
         {
             InitializeComponent();
-            List<WorkersVacation> workersVacations = new List<WorkersVacation>();
             for(int i =0; i < 35; i++)
             {
-                workersVacations.Add(new WorkersVacation(new PersonVacation()
+                Vacations.Add(new WorkersVacation(new PersonVacation()
                 {
                     Name = i.ToString(),
                     StartDateVacation = new DateTime(2021, 3, (i + 1) % 28 + 1),
@@ -52,12 +52,12 @@ namespace VacationSchedule
             }
 
             
-            foreach(var workers in workersVacations)
+            foreach(var workers in Vacations)
                 MainStackPanel.Children.Add(workers);
 
             for(int i = 0; i<365;i++)
             {
-                PersonDay[i] = workersVacations.Where(x =>
+                PersonDay[i] = Vacations.Where(x =>
                       ((TimeSpan)(x.Person.StartDateVacation - new DateTime(2021, 1, 1))).Days <= i + 1 &&
                       ((TimeSpan)(x.Person.EndDateVacation - new DateTime(2021, 1, 1))).Days >= i + 1).Count();
             }
@@ -69,12 +69,12 @@ namespace VacationSchedule
 
             LinearGradientBrush gradient = new LinearGradientBrush();
 
-            int CountPerson = workersVacations.Count;
+            int CountPerson = Vacations.Count;
 
             for(int i = 0; i < 365; i++)
             {
                 double percent = PersonDay[i] * 1.0/ CountPerson;
-                Color color = new Color()
+                Color color = new()
                 {
                     A = 150,
                     R = percent < 0.1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent-0.1)*(1/0.25)*255),

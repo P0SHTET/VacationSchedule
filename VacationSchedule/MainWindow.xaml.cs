@@ -1,4 +1,5 @@
-﻿using JSONUtil;
+﻿using IPersonLib;
+using JSONUtil;
 using PersonVacationLib;
 using System;
 using System.Collections.Generic;
@@ -23,17 +24,17 @@ namespace VacationSchedule
     /// </summary>
     public partial class MainWindow : Window
     {
+        private VacationCalendar _vacationCalendar;
+        private DepartmentList _departmentList;
         public MainWindow()
         {
+            _departmentList = JSONConverter<DepartmentList>.Deserialize();
+            _vacationCalendar = new VacationCalendar(_departmentList.Departments[0]);
+            _vacationCalendar.Margin = new Thickness(150, 100, 0, 0);
+            
             InitializeComponent();
-            //WorkersVacation workers = new WorkersVacation(new PersonVacation()
-            //{
-            //    Name = "Алексей",
-            //    StartDateVacation = new DateTime(2021, 3, 5),
-            //    EndDateVacation = new DateTime(2021, 4, 5),
-            //}, new SolidColorBrush(new Color() { A = 100, R = 0, G = 255, B = 0 }));
-            //workers.Margin = new Thickness(200, 100, 100, 736);
-            //MainGrid.Children.Add(workers);
+
+            MainGrid.Children.Add(_vacationCalendar);
         }       
     }
 }

@@ -5,19 +5,19 @@ namespace JSONUtil
 {
     public static class JSONConverter<T>
     {
-        private static DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+        private static readonly DataContractJsonSerializer _serializer = new(typeof(T));
         
         public static void Serialize(T obj)
         {
-            FileStream stream = new FileStream("data.json", FileMode.OpenOrCreate);
-            serializer.WriteObject(stream,obj);
+            FileStream stream = new("data.json", FileMode.OpenOrCreate);
+            _serializer.WriteObject(stream,obj);
             stream.Close();
         }
 
         public static T Deserialize()
         {
-            FileStream stream = new FileStream("data.json", FileMode.OpenOrCreate);
-            T res = (T)serializer.ReadObject(stream);
+            FileStream stream = new("data.json", FileMode.OpenOrCreate);
+            T res = (T)_serializer.ReadObject(stream);
             stream.Close();
             return res;
         }
