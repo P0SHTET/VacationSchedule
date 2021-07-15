@@ -3,18 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VacationSchedule"
+        xmlns:local="clr-namespace:VacationSchedule" RenderOptions.BitmapScalingMode="HighQuality"
         mc:Ignorable="d" WindowStyle="None" ResizeMode="NoResize"
-        Title="ChangeDateWindow" Height="150" Width="210" WindowStartupLocation="Manual">
+        Title="ChangeDateWindow" Height="190" Width="210" WindowStartupLocation="Manual">
 
     <Border BorderThickness="2" BorderBrush="Black">
         <Grid>
             <DatePicker Name="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Width="180"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Начало отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="14,10,0,0" Text="Начало отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <DatePicker Name="End" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,71,0,0" Width="180"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,55,0,0" Text="Окончание отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <Button Content="Сохранить" HorizontalAlignment="Left" Margin="120,100,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click"/>
-            <Button Content="Отмена" HorizontalAlignment="Left" Margin="45,100,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click_1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="13,55,0,0" Text="Окончание отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Button Content="Сохранить" HorizontalAlignment="Left" Margin="123,151,0,0" 
+                    Background="LightGreen" Foreground="ForestGreen" FontWeight="Bold"
+                    VerticalAlignment="Top" Width="70" Click="SaveButton_Click" Height="30"/>
+            <Button Content="Отмена" HorizontalAlignment="Left" Margin="48,151,0,0" 
+                    Background="LightPink" Foreground="Crimson" FontWeight="Bold"
+                    VerticalAlignment="Top" Width="70" Click="CancelButton_Click" Height="30"/>
+            <TextBlock HorizontalAlignment="Left" Margin="13,100,0,0" Text="Имя:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Center" Margin="0,116,0,0" Text="TextBox" TextWrapping="Wrap" 
+                     VerticalAlignment="Top" Width="179" Name="NameBox" Height="24"/>
+            <Button HorizontalAlignment="Left" Margin="13,151,0,0" VerticalAlignment="Top" Width="30"
+                    Background="White" Click="DeleteButton_Click">
+                <Image Source="ImageSource/deleteperson.png"/>
+            </Button>
 
         </Grid>
     </Border>

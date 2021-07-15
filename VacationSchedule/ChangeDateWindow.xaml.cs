@@ -20,8 +20,11 @@ namespace VacationSchedule
     /// </summary>
     public partial class ChangeDateWindow : Window
     {
-        public delegate void ChangeDate(DateTime? startVacation, DateTime? endVacation);
+        public delegate void ChangeDate(DateTime? startVacation, DateTime? endVacation, string name);
+        public delegate void DeletePerson();
         public event ChangeDate ChangeDateEvent;
+        public event DeletePerson DeletePersonEvent;
+
         public ChangeDateWindow(double xPosition, double yPosition, IPersonVacation person)
         {
             
@@ -29,19 +32,31 @@ namespace VacationSchedule
 
             Start.SelectedDate = person.StartDateVacation;
             End.SelectedDate = person.EndDateVacation;
+            NameBox.Text = person.Name;
             Left = xPosition;
             Top = yPosition;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangeDateEvent?.Invoke(Start.SelectedDate, End.SelectedDate);
+            ChangeDateEvent?.Invoke(Start.SelectedDate, End.SelectedDate, NameBox.Text);
             DialogResult = true;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить сотрудника " + NameBox.Text + "?", "Подтвердите действие",
+                                MessageBoxButton.YesNo, MessageBoxImage.Question) 
+                                == MessageBoxResult.Yes)
+            {
+                DeletePersonEvent?.Invoke();
+                DialogResult = false;
+            }
         }
     }
 }

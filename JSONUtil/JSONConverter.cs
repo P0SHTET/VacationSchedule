@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.IO;
 using System.Runtime.Serialization.Json;
 
 namespace JSONUtil
@@ -6,11 +7,12 @@ namespace JSONUtil
     public static class JSONConverter<T>
     {
         private static readonly DataContractJsonSerializer _serializer = new(typeof(T));
-        
+
         public static void Serialize(T obj)
         {
+            File.Delete("data.json");
             FileStream stream = new("data.json", FileMode.OpenOrCreate);
-            _serializer.WriteObject(stream,obj);
+            _serializer.WriteObject(stream, obj);
             stream.Close();
         }
 

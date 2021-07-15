@@ -35,28 +35,52 @@ namespace VacationSchedule
         };
         List<WorkersVacation> Vacations = new();
 
+        IDepartment Department;
+
         public delegate void UpdateInfo();
         public event UpdateInfo InfoChanged;
 
         public VacationCalendar(IDepartment department)
         {
+            Department = department;
             InitializeComponent();
+            UpdateCalendar();
+
+
+
+            UpdateResultRectangle();
+        }
+
+        private void UpdateCalendar()
+        {
+            foreach (var workers in Vacations)
+            {
+                MainStackPanel.Children.Remove(workers);
+                workers.DatesChange -= Workers_DatesChange;
+                workers.DeletePersonEvent -= Workers_DeletePersonEvent;
+            }
+            Vacations.Clear();
             int j = 0;
-            foreach(IPersonVacation person in department.PersonVacations)
+            foreach (IPersonVacation person in Department.PersonVacations)
             {
                 Vacations.Add(new WorkersVacation(person, RectanglesColors[j % RectanglesColors.Count])
-                                                 { Margin = new Thickness(0, 1, 2, 1) });
+                { Margin = new Thickness(0, 1, 2, 1) });
                 j++;
             }
-
-
             foreach (var workers in Vacations)
             {
                 MainStackPanel.Children.Add(workers);
                 workers.DatesChange += Workers_DatesChange;
+                workers.DeletePersonEvent += Workers_DeletePersonEvent;
             }
+        }
 
+        private void Workers_DeletePersonEvent(IPersonVacation person)
+        {
+            Department.PersonVacations.Remove(person);
+            UpdateCalendar();
             UpdateResultRectangle();
+            InfoChanged?.Invoke();
         }
 
         private void Workers_DatesChange()
@@ -84,8 +108,8 @@ namespace VacationSchedule
                 Color color = new()
                 {
                     A = 150,
-                    R = percent == 0 ? (byte)255 : percent < 0.1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent - 0.1) * (1 / 0.25) * 255),
-                    G = percent == 0 ? (byte)255 : percent < 0.1 ? (byte)255 : percent > 0.25 ? (byte)0 : (byte)(255 - (percent - 0.1) * (1 / 0.25) * 255),
+                    R = percent == 0 ? (byte)255 : percent < 0.1 || PersonDay[i] == 1 ? (byte)0 : percent > 0.25 ? (byte)255 : (byte)((percent - 0.1) * (1 / 0.25) * 255),
+                    G = percent == 0 ? (byte)255 : percent < 0.1 || PersonDay[i] == 1 ? (byte)255 : percent > 0.25 ? (byte)0 : (byte)(255 - (percent - 0.1) * (1 / 0.25) * 255),
                     B = percent == 0 ? (byte)255 : (byte)0
                 };
                 gradient.GradientStops.Add(new GradientStop(color, i / 365.0));

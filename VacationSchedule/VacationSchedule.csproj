@@ -8,9 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="deleteperson.png" />
+    <None Remove="ImageSource\trash.png" />
+    <None Remove="pencil.png" />
+    <None Remove="plus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IPersonLib\IPersonLib.csproj" />
     <ProjectReference Include="..\JSONUtil\JSONUtil.csproj" />
     <ProjectReference Include="..\PersonVacationLib\PersonVacationLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ImageSource\deleteperson.png" />
+    <Resource Include="ImageSource\pencil.png" />
+    <Resource Include="ImageSource\plus.png" />
+    <Resource Include="ImageSource\trash.png" />
   </ItemGroup>
 
 </Project>

@@ -25,6 +25,9 @@ namespace VacationSchedule
         public delegate void ChangeSignal();
         public event ChangeSignal DatesChange;
 
+        public delegate void DeletePerson(IPersonVacation person);
+        public event DeletePerson DeletePersonEvent;
+
         private Thickness _rectangleMargin;
         public Thickness RectangleMargin 
         {
@@ -85,22 +88,30 @@ namespace VacationSchedule
                 right = ((TimeSpan)(new DateTime(2021, 12, 31) - Person.EndDateVacation)).Days / 365.0 * 1417;
             }
             RectangleMargin = new Thickness(left, 0, right, 0);
+
+            NameBlock.Text = "  " + Person.Name;
         }
 
         private void NameBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            double xPosition = PointToScreen(new Point(0,((TextBlock)sender).ActualHeight)).X;
+            double xPosition = PointToScreen(new Point(0,((TextBlock)sender).ActualHeight)).X + 5;
             double yPosition = PointToScreen(new Point(0, ((TextBlock)sender).ActualHeight)).Y;
             ChangeDateWindow changeDateWindow = new ChangeDateWindow(xPosition, yPosition, Person);
-            //var r = MainGrid.ActualWidth;
             changeDateWindow.ChangeDateEvent += ChangeDateWindow_ChangeDateEvent;
+            changeDateWindow.DeletePersonEvent += ChangeDateWindow_DeletePersonEvent;
             changeDateWindow.ShowDialog();
         }
 
-        private void ChangeDateWindow_ChangeDateEvent(DateTime? startVacation, DateTime? endVacation)
+        private void ChangeDateWindow_DeletePersonEvent()
+        {
+            DeletePersonEvent?.Invoke(Person);
+        }
+
+        private void ChangeDateWindow_ChangeDateEvent(DateTime? startVacation, DateTime? endVacation, string name)
         {
             Person.StartDateVacation = startVacation;
             Person.EndDateVacation = endVacation;
+            Person.Name = name;
 
             UpdateDates();
             DatesChange?.Invoke();
