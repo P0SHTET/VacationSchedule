@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="deleteperson.png" />
+    <None Remove="ImageSource\addperson.png" />
     <None Remove="ImageSource\trash.png" />
     <None Remove="pencil.png" />
     <None Remove="plus.png" />
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ImageSource\addperson.png" />
     <Resource Include="ImageSource\deleteperson.png" />
     <Resource Include="ImageSource\pencil.png" />
     <Resource Include="ImageSource\plus.png" />

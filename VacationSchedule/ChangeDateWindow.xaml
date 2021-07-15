@@ -23,7 +23,7 @@
             <TextBox HorizontalAlignment="Center" Margin="0,116,0,0" Text="TextBox" TextWrapping="Wrap" 
                      VerticalAlignment="Top" Width="179" Name="NameBox" Height="24"/>
             <Button HorizontalAlignment="Left" Margin="13,151,0,0" VerticalAlignment="Top" Width="30"
-                    Background="White" Click="DeleteButton_Click">
+                    Background="White" Click="DeleteButton_Click" BorderThickness="0" x:Name="DelPersonBut">
                 <Image Source="ImageSource/deleteperson.png"/>
             </Button>
 

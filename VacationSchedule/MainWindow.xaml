@@ -123,8 +123,8 @@
                   Grid.Column="11" StrokeThickness="0.5" Stroke="Black"/>
             <Line X1="12" Y1="80" X2="12" Y2="850"
                   Grid.Column="12" StrokeThickness="0.5" Stroke="Black"/>
-            <ComboBox Name="DepartmentCombo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"
-                      Width="339" Height="40" Grid.ColumnSpan="4" SelectionChanged="DepartmentCombo_SelectionChanged"/>
+            <ComboBox Style="{DynamicResource ComboBoxStyle1}" Name="DepartmentCombo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"
+                      Width="340" Height="40" Grid.ColumnSpan="4" SelectionChanged="DepartmentCombo_SelectionChanged"/>
             <Button Grid.Column="4" HorizontalAlignment="Left" Margin="5,10,0,0" BorderThickness="0"
                     VerticalAlignment="Top" Height="40" Width="40" Click="RenameDepartment_ButtonClick"
                     Background="LightBlue" BorderBrush="#FFACACAC">
