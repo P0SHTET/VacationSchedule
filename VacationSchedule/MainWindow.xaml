@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacationSchedule" RenderOptions.BitmapScalingMode="HighQuality"
         mc:Ignorable="d" Background="LightBlue" ResizeMode="NoResize"
-        Title="MainWindow" Height="900" Width="1450" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="700" Width="1450" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid x:Name="MainGrid"/>
@@ -103,27 +103,27 @@
 
             <Line X1="3" Y1="80" X2="3" Y2="100"
                   Grid.Column="2" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="3" Y1="{Binding Path=LineY1}" X2="3" Y2="850"
+            <Line X1="3" Y1="{Binding Path=LineY1}" X2="3" Y2="650"
                   Grid.Column="2" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="-5" Y1="80" X2="-5" Y2="850"
+            <Line X1="-5" Y1="80" X2="-5" Y2="650"
                   Grid.Column="3" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="-1" Y1="80" X2="-1" Y2="850"
+            <Line X1="-1" Y1="80" X2="-1" Y2="650"
                   Grid.Column="4" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="-1" Y1="80" X2="-1" Y2="850"
+            <Line X1="-1" Y1="80" X2="-1" Y2="650"
                   Grid.Column="5" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="1" Y1="80" X2="1" Y2="850"
+            <Line X1="1" Y1="80" X2="1" Y2="650"
                   Grid.Column="6" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="1" Y1="80" X2="1" Y2="850"
+            <Line X1="1" Y1="80" X2="1" Y2="650"
                   Grid.Column="7" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="4" Y1="80" X2="4" Y2="850"
+            <Line X1="4" Y1="80" X2="4" Y2="650"
                   Grid.Column="8" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="8" Y1="80" X2="8" Y2="850"
+            <Line X1="8" Y1="80" X2="8" Y2="650"
                   Grid.Column="9" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="8" Y1="80" X2="8" Y2="850"
+            <Line X1="8" Y1="80" X2="8" Y2="650"
                   Grid.Column="10" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="12" Y1="80" X2="12" Y2="850"
+            <Line X1="12" Y1="80" X2="12" Y2="650"
                   Grid.Column="11" StrokeThickness="0.5" Stroke="Black"/>
-            <Line X1="12" Y1="80" X2="12" Y2="850"
+            <Line X1="12" Y1="80" X2="12" Y2="650"
                   Grid.Column="12" StrokeThickness="0.5" Stroke="Black"/>
             <ComboBox Style="{DynamicResource ComboBoxStyle1}" Name="DepartmentCombo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"
                       Width="340" Height="40" Grid.ColumnSpan="4" SelectionChanged="DepartmentCombo_SelectionChanged"/>
