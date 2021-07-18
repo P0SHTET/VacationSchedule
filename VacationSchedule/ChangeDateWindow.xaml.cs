@@ -61,5 +61,15 @@ namespace VacationSchedule
                 DialogResult = false;
             }
         }
+
+        private void Start_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            End.DisplayDateStart = Start.SelectedDate;
+        }
+
+        private void End_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Start.DisplayDateEnd = End.SelectedDate;
+        }
     }
 }

@@ -36,6 +36,11 @@ namespace VacationSchedule
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (NameBox.Text.Length == 0)
+            {
+                MessageBox.Show("Введите имя отдела!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             if (_newDepartment) AddDepartment?.Invoke(NameBox.Text);
             else ChangeNameDepartment?.Invoke(NameBox.Text);
             DialogResult = true;

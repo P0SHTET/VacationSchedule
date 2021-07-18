@@ -101,7 +101,9 @@
                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" 
                        FontSize="20" FontWeight="Bold"/>
 
-            <Line X1="3" Y1="80" X2="3" Y2="850"
+            <Line X1="3" Y1="80" X2="3" Y2="100"
+                  Grid.Column="2" StrokeThickness="0.5" Stroke="Black"/>
+            <Line X1="3" Y1="{Binding Path=LineY1}" X2="3" Y2="850"
                   Grid.Column="2" StrokeThickness="0.5" Stroke="Black"/>
             <Line X1="-5" Y1="80" X2="-5" Y2="850"
                   Grid.Column="3" StrokeThickness="0.5" Stroke="Black"/>

@@ -1,25 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using IPersonLib;
 
 namespace VacationSchedule
 {
-    /// <summary>
-    /// Логика взаимодействия для WorkersVacation.xaml
-    /// </summary>
     public partial class WorkersVacation : UserControl, INotifyPropertyChanged
     {
         public delegate void ChangeSignal();
@@ -58,19 +46,17 @@ namespace VacationSchedule
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public WorkersVacation()
-        {
-            InitializeComponent();
-        }
+        private readonly int _rectangleWidth = 1417;
         public WorkersVacation(IPersonVacation person, SolidColorBrush fill)
         {
             Person = person;
             
             InitializeComponent();
-            NameBlock.Text = "  " + Person.Name;
+            NameBlock.Text = Person.Name;
             DataContext = this;
             DataRec.Fill = fill;
-            ColorIndicator.Stroke = new SolidColorBrush(new Color() {A = 255, R = fill.Color.R, G = fill.Color.G, B = fill.Color.B, });
+            ColorIndicator.Stroke = new SolidColorBrush(new Color() 
+            {A = 255, R = fill.Color.R, G = fill.Color.G, B = fill.Color.B, });
             UpdateDates();
         }
         private void UpdateDates()
@@ -80,16 +66,15 @@ namespace VacationSchedule
             if (Person.StartDateVacation == null || Person.EndDateVacation == null)
             {
                 left = 0;
-                right = 1417;
+                right = _rectangleWidth;
             }
             else
             {
-                left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021, 1, 1))).Days / 365.0 * 1417;
-                right = ((TimeSpan)(new DateTime(2021, 12, 31) - Person.EndDateVacation)).Days / 365.0 * 1417;
+                left = ((TimeSpan)(Person.StartDateVacation - new DateTime(2021, 1, 1))).Days / 365.0 * _rectangleWidth;
+                right = ((TimeSpan)(new DateTime(2021, 12, 31) - Person.EndDateVacation)).Days / 365.0 * _rectangleWidth;
             }
             RectangleMargin = new Thickness(left, 0, right, 0);
-
-            NameBlock.Text = "  " + Person.Name;
+            NameBlock.Text = Person.Name;
         }
 
         private void NameBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

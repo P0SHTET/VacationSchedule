@@ -9,9 +9,9 @@
 
     <Border BorderThickness="2" BorderBrush="Black">
         <Grid>
-            <DatePicker Name="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Width="180"/>
+            <DatePicker SelectedDateChanged="Start_SelectedDateChanged" Name="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,26,0,0" Width="180"/>
             <TextBlock HorizontalAlignment="Left" Margin="14,10,0,0" Text="Начало отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <DatePicker Name="End" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,71,0,0" Width="180"/>
+            <DatePicker SelectedDateChanged="End_SelectedDateChanged" Name="End" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,71,0,0" Width="180"/>
             <TextBlock HorizontalAlignment="Left" Margin="13,55,0,0" Text="Окончание отпуска:" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <Button Content="Сохранить" HorizontalAlignment="Left" Margin="123,151,0,0" 
                     Background="LightGreen" Foreground="ForestGreen" FontWeight="Bold"

@@ -1,36 +1,36 @@
 ﻿using IPersonLib;
 using JSONUtil;
 using PersonVacationLib;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace VacationSchedule
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private VacationCalendar _vacationCalendar;
         private DepartmentList _departmentList;
+        private double _lineY1;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public double LineY1
+        { 
+            get
+            {
+                return _lineY1;
+            }
+            set
+            {
+                _lineY1 = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LineY1)));
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
-
-
+            DataContext = this;
+            LineY1 = 100;
             _departmentList = JSONConverter<DepartmentList>.Deserialize();
 
             UpdateCalendar();
@@ -57,6 +57,7 @@ namespace VacationSchedule
         private void SaveInfo()
         {
             JSONConverter<DepartmentList>.Serialize(_departmentList);
+            LineY1 = _departmentList.Departments[DepartmentCombo.SelectedIndex].PersonVacations.Count * 26 + 100;
         }
 
         private void DepartmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,6 +81,8 @@ namespace VacationSchedule
             };
             MainGrid.Children.Add(_vacationCalendar);
             _vacationCalendar.InfoChanged += VacationCalendar_InfoChanged;
+            LineY1 = _departmentList.Departments[selectedDepartment].PersonVacations.Count * 26 + 100;
+
         }
 
         private void RenameDepartment_ButtonClick(object sender, RoutedEventArgs e)
