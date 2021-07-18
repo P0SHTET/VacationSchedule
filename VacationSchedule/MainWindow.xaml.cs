@@ -2,6 +2,7 @@
 using JSONUtil;
 using PersonVacationLib;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,7 +32,13 @@ namespace VacationSchedule
             InitializeComponent();
             DataContext = this;
             LineY1 = 100;
-            _departmentList = JSONConverter<DepartmentList>.Deserialize();
+
+            if (File.Exists("data.json"))
+                _departmentList = JSONConverter<DepartmentList>.Deserialize();
+            else
+            {
+                _departmentList = new DepartmentList("отдел 1");
+            }
 
             UpdateCalendar();
             UpdateDepartmentCombo();

@@ -10,7 +10,8 @@ namespace JSONUtil
 
         public static void Serialize(T obj)
         {
-            File.Delete("data.json");
+            if(File.Exists("data.json"))
+                File.Delete("data.json");
             FileStream stream = new("data.json", FileMode.OpenOrCreate);
             _serializer.WriteObject(stream, obj);
             stream.Close();

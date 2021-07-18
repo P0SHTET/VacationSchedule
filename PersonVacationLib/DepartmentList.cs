@@ -16,6 +16,11 @@ namespace PersonVacationLib
         {
             _departments = new List<IDepartment>();
         }
+        public DepartmentList(string nameFirstDepartment)
+        {
+            _departments = new List<IDepartment>();
+            _departments.Add(new Department(nameFirstDepartment));
+        }
         private List<IDepartment> _departments;
         public List<IDepartment> Departments
         {
